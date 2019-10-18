@@ -60,26 +60,65 @@ const runners = [
 let fullNames = [];
 console.log(fullNames);
 
+runners.forEach(function(items){
+  return fullNames.push (`${items.first_name} ${items.last_name}`);
+})
+  
+
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
 console.log(firstNamesAllCaps);
+
+runners.map(function(items){
+  return firstNamesAllCaps.push(`${items.first_name}`);
+})
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
 console.log(runnersLargeSizeShirt);
 
+runners.filter(function(items){
+  return runnersLargeSizeShirt.push(items.shirt_size == "L");
+});
+
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = 0;
+
+let ticketPriceTotal = [];
 console.log(ticketPriceTotal);
+
+runners.reduce(function(accumulator, items){
+  return ticketPriceTotal.push(accumulator + items.donation);
+}, 0);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// List the companies and their respective donations
+
+let compDon = [];
+console.log(compDon);
+
+runners.forEach(function(items){
+  return compDon.push (`${items.company_name} donated ${items.donation} dollars`);
+})
 
 // Problem 2
+//The last registered runner lost an item and needs to be contacted to return it
+
+let lastRunner = runners[49];
+console.log(`${lastRunner.first_name} ${lastRunner.last_name} ${lastRunner.email}`)
 
 // Problem 3
+//The runner who works for Livetube must be identified so we can all shame them for being, like, super lame
+
+let shameTheRunner = [];
+console.log(shameTheRunner);
+
+runners.filter(function(items){
+  return shameTheRunner.push(items.company_name === "Livetube");
+});
+
